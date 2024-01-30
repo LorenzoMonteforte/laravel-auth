@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PortfolioController;
+use App\Models\Portfolio;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $portfolio = Portfolio::all();
+    return view('welcome', compact("portfolio"));
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::resource('portfolios', PortfolioController::class);
+
+require __DIR__ . '/auth.php';
