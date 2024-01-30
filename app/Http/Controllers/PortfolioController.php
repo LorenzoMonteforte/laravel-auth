@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
+<<<<<<< HEAD
     /**
      * Display a listing of the resource.
      */
@@ -14,6 +15,13 @@ class PortfolioController extends Controller
     {
         $portfolios = Portfolio::all();
         return view("portfolios.index", compact("portfolios"));
+=======
+
+    public function index()
+    {
+        $portfolio = Portfolio::all();
+        return view('portfolios.index', compact("portfolio"));
+>>>>>>> 5c086d578443f5f39767b1bd51f6390c55bf9375
     }
 
     /**
